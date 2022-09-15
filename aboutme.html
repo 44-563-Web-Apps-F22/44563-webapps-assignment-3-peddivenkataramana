@@ -51,6 +51,34 @@
                                             </tr>
          
         </table>
+    <hr>
+    <h4>Programming</h4>
+    <blockquote>
+    How to send the emoji parallel with live chat using core php?
+    </blockquote>
+<a href="https://stackoverflow.com/questions/42833933/how-to-send-the-emoji-parallel-with-live-chat-using-core-php"></a>
+<pre>
+    <?php
+
+    $hostname = 'localhost';
+    $user = 'username';
+    $pass = 'password';
+    $database = 'database_name';
+    
+    $db_connection = new PDO( "mysql:host=" . $hostname . ";dbname=" . $database, $user, $pass );
+    
+    $results = $db_connection->query( 'SELECT testimonial, author FROM recommendations WHERE 1 ORDER by rand() LIMIT 1' );
+    
+    foreach ( $results as $row ) {
+        echo '<p id="quote">' . $row['testimonial'] . '</p>';
+        echo '<p id="author">&ndash;' . $row['author'] . '</p>';
+    }
+    
+    // Close the connection
+    $db_connection = null;
+
+
+</pre>
 
 
 
